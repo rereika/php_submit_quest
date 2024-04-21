@@ -1,7 +1,7 @@
 <?php
 
 namespace SubmitQuest;
-require_once('Main.php');
+require_once('Game.php');
 
 class Card{
     const SUIT_TEXT = [
@@ -27,9 +27,6 @@ class Card{
 
     private array $cards;
     private array $playerCards;
-
-    // private array $player1Cards; //[][][][][][][] 26こ
-    // private array $player2Cards; //[][][][][][][] 26こ
 
     public function __construct(){
     foreach(self::SUIT_TEXT as $suit){
@@ -58,9 +55,6 @@ public function shuffleAndDistributeCards(int $numberOfPlayers){ //もし3人な
 public function getCard(){
     return $this->playerCards;
 }
-// public function getCard2(){
-//     return $this->player2Cards;
-// }
 public static function CardRank($playerCards){
     $numberName = $playerCards[1];
     return array_search($numberName, self::CARD_TEXT);
