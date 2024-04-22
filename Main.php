@@ -1,6 +1,6 @@
 <?php
 require_once('Game.php');
 
-list($players, $name) = \SubmitQuest\Game::preparation();
+list($players, $name) = Game::preparation();
 
-\SubmitQuest\Game::war($players, $name);
+Game::war($players, $name);

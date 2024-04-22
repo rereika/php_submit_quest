@@ -1,6 +1,4 @@
 <?php
-
-namespace SubmitQuest;
 require_once('Card.php');
 require_once('Player.php');
 require_once('Hand.php');
@@ -41,7 +39,6 @@ class Game{
                 }
                     $cardRank = [];
                     $cardRank[] = Card::CardRank($drawCard);
-                    return $cardRank;
 
                     Hand::evaluator($cardRank, $players, $name, $onHandsCards, $drawnCards);
                     Hand::evaluator2($players, $onHandCards);

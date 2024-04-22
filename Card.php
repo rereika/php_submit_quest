@@ -1,6 +1,4 @@
 <?php
-
-namespace SubmitQuest;
 require_once('Game.php');
 
 class Card{

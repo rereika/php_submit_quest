@@ -1,9 +1,6 @@
 <?php
-
-namespace SubmitQuest;
 require_once('Game.php');
 require_once('Card.php');
-use SubmitQuest\Game;
 
 class Hand{
     private array $player1Cards;
