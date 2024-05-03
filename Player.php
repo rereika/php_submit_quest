@@ -1,14 +1,51 @@
 <?php
 require_once('Game.php');
-require_once('Card.php');
+require_once('Deck.php');
 
-class Player{
+class Player
+{
+    protected $name;
+    protected $hand;
 
-    private array $playerCards;
-    public function getCard(){
-        return $this->playerCards;
+
+    public function __construct($name)
+    {
+        $this->name = $name;
     }
-    public function setCard($playerCards){
-        $this->playerCards = $playerCards;
+
+    public function shuffleCards(Deck $deck)
+    {
+        $d = $deck->getDeck();
+        shuffle($d);
+        $deck->setDeck($d);
+    }
+
+    public function dealCards(Deck $deck, $number)
+    {
+        $d = $deck->getDeck();
+        $dealDeck = array_slice($d, 0, $number);
+        array_splice($d, 0, $number);
+        $deck->setDeck($d);
+
+        return $dealDeck;
+    }
+    public function setHand($hand)
+    {
+        $this->hand = $hand;
+    }
+    public function getHand()
+    {
+        return $this->hand;
+    }
+    public function getName()
+    {
+        return $this->name;
+    }
+    public function giveCard(){
+        $card = array_shift($this->hand);
+        return $card;
+    }
+    public function receiveCard($card){
+        return array_push($this->hand, $card);
     }
 }
