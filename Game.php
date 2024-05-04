@@ -33,13 +33,6 @@ class Game
 
         while(!empty($players['プレイヤー1']->getHand()) && !empty($players['プレイヤー2']->getHand())){
 
-        // while (true) {
-        //     foreach ($players as $player) {
-        //         if (count($player->getHand()) === 0){
-        //             echo $player->getName() . 'の手札がなくなりました。' . PHP_EOL;
-        //             break 2;
-        //         }
-
         echo '戦争！' . PHP_EOL;
 
         foreach ($players as $player) {
@@ -59,6 +52,11 @@ class Game
             foreach ($drawCards as $drawCard) {
                 array_push($onHandCards1, $drawCard);
             }
+
+            $arr = $players['プレイヤー2']->getHand();
+            array_shift($arr);
+            $players['プレイヤー2']->setHand($arr);
+
             $drawCards = [];
         } elseif ($ranks[0] < $ranks[1]) {
             echo 'プレイヤー2が勝ちました。' . PHP_EOL;
@@ -66,11 +64,24 @@ class Game
             foreach ($drawCards as $drawCard) {
                 array_push($onHandCards2, $drawCard);
             }
+
+            $arr = $players['プレイヤー1']->getHand();
+            array_shift($arr);
+            $players['プレイヤー1']->setHand($arr);
+
             $drawCards = [];
         } else {
             echo '引き分けです。' . PHP_EOL;
             array_push($drawCards, $players['プレイヤー1']->getHand()[0], $players['プレイヤー2']->getHand()[0]);
         }
+
+        $arr = $players['プレイヤー1']->getHand();
+            array_shift($arr);
+            $players['プレイヤー1']->setHand($arr);
+
+        $arr = $players['プレイヤー2']->getHand();
+            array_shift($arr);
+            $players['プレイヤー2']->setHand($arr);
 
         if (empty($players['プレイヤー1']->getHand())) {
             if (!empty($onHandCards1)) {
