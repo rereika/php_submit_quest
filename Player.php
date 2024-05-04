@@ -41,11 +41,5 @@ class Player
     {
         return $this->name;
     }
-    public function giveCard(){
-        $card = array_shift($this->hand);
-        return $card;
-    }
-    public function receiveCard($card){
-        return array_push($this->hand, $card);
-    }
+
 }

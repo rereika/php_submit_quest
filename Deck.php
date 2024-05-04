@@ -26,8 +26,6 @@ class Deck
     ];
 
     private array $deck;
-    private $number1;
-    private $number2;
 
     public function __construct()
     {
@@ -46,14 +44,5 @@ class Deck
     public function setDeck($deck)
     {
         $this->deck = $deck;
-    }
-
-    public function CardRank1()
-    {
-        return array_search($this->number1, self::CARD_TEXT);
-    }
-    public function CardRank2()
-    {
-        return array_search($this->number2, self::CARD_TEXT);
     }
 }
